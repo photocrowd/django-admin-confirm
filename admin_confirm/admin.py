@@ -460,8 +460,10 @@ def confirm_action(func):
         # Check if we are using DjangoObjectActions and if so check
         if not has_perm and hasattr(modeladmin, 'get_changelist_actions'):
             has_perm = (
-                modeladmin.get_changelist_actions(request).get(func.__name__)
-            ) is not None
+                True
+                if func.__name__ in modeladmin.get_changelist_actions(request)
+                else False
+            )
 
         action_display_name = snake_to_title_case(func.__name__)
         title = f"Confirm Action: {action_display_name}"
