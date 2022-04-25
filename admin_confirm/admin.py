@@ -461,7 +461,7 @@ def confirm_action(func):
         if not has_perm and hasattr(modeladmin, 'get_changelist_actions'):
             has_perm = (
                 True
-                if func.__name__ in modeladmin.get_changelist_actions(request)
+                if func.__name__ in modeladmin.get_change_actions(request, None, None)
                 else False
             )
 
