@@ -467,7 +467,7 @@ def confirm_action(func):
 
             # If DjangoObjectActions is being used then the queryset will be a single
             # instance
-            queryset = list(queryset)
+            queryset = [queryset]
 
         action_display_name = snake_to_title_case(func.__name__)
         title = f"Confirm Action: {action_display_name}"
